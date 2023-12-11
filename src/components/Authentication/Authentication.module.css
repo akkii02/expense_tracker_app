@@ -1,0 +1,45 @@
+.auth{
+      height: 800px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+.signup{
+      width: 25%;
+}
+.heading{
+      padding: 10px;
+      text-align: center;
+
+}
+.form{
+      width: 80%;
+      margin-left: 10%;
+}
+.main{
+      height: 400px;
+      background-color: white;
+      margin: 10px;
+      /* border: 2px solid black; */
+      box-shadow: gray 1px 1px 7px 4px;
+      border-radius: 10px;
+}
+.btn{
+      width: 100%;
+      border-radius: 20px;
+      padding: 10px;
+      margin: 10px 0;
+      background-color: #2196f3;
+      color: white;
+}
+.int{
+      margin: 10px 0;
+      padding: 10px;
+}
+.btns{
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+
+}
