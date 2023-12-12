@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Input from "../UI/Input";
-import Button from "../UI/Button";
 import classes from "./Authentication.module.css";
+import signupIcon from "../asset/signup-icon.webp" 
+
 
 const Authentication = () => {
   const [inputEmail, setInputEmail] = useState("");
@@ -10,14 +11,14 @@ const Authentication = () => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-
-    if (inputEmail && inputPassword && confirmPassword) {
+    console.log("Check", inputEmail && inputPassword && confirmPassword);
+    if (inputEmail>0 && inputPassword && confirmPassword){
       if (inputPassword !== confirmPassword) {
         alert("Please check Password");
       } else {
         try {
           const response = await fetch(
-            "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=YOUR_API_KEY",
+            "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDYqoBZCKTVh4iUeC-VLJzHdTjoISkXW-k",
             {
               method: "POST",
               body: JSON.stringify({
@@ -31,25 +32,32 @@ const Authentication = () => {
             }
           );
 
-          if (response.ok) {
-            const data = await response.json();
-            // throw new Error(data.error.message);
-            console.log(data)
+          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(data.error.message);
           }
-          // Handle successful sign-up here
+          console.log("User has successfully signed up.")
         } catch (error) {
           console.error("Error:", error.message);
-          // Handle error during sign-up
         }
       }
+    }else{
+      alert("Please enter the valid input");
     }
+    setInputEmail("");
+    setInputPassword("");
+    setConfirmPassword("");
   };
 
   return (
     <div className={classes.auth}>
       <div className={classes.signup}>
         <div className={classes.main}>
-          <h1 className={classes.heading}>SignUp</h1>
+          <h1 className={classes.heading}>
+          <img src={signupIcon} alt="img" className={classes.img} />
+          <br/>
+            SignUp
+            </h1>
           <form onSubmit={submitHandler} className={classes.form}>
             <Input
               type="email"
@@ -72,10 +80,10 @@ const Authentication = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            <Button className={classes.btn}>Sign Up</Button>
+            <button className={classes.btn}>Sign Up</button>
           </form>
         </div>
-        <Button className={classes.btns}>Have an account? Login</Button>
+        <button className={classes.btns}>Have an account? Login</button>
       </div>
     </div>
   );
