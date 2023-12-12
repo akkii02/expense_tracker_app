@@ -64,7 +64,10 @@
 .img{
       width: 30px;
 }
-
+.forgetLink{
+      display: flex;
+      justify-content: center;
+}
 @media only screen and (max-width: 767px) {
     .signup{
       width: 90%;
