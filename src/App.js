@@ -1,18 +1,20 @@
-import Authentication from './components/Authentication/Authentication';
-import {Route,Switch} from "react-router-dom";
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import './App.css';
-import Welcome from './components/Pages/Welcome';
+import SignUp from './components/Authentication/SignUp';
+import { useContext } from 'react';
+import AuthContext from './components/store/AuthContext';
+import Root from './components/Pages/Root';
+import Profile from './components/Pages/Profile';
 
 function App() {
+const authCtx = useContext(AuthContext)
   return (
-    <Switch>
-    <Route path="/auth" exact>
-    <Authentication/>
-    </Route>
-    <Route path="/">
-      <Welcome/>
-    </Route>
-    </Switch>
+  <BrowserRouter>
+  <Routes>
+    <Route path='/' element={!authCtx.isLoggedIn ? <SignUp/> : <Root/>} />
+    <Route path='/Profile' element={<Profile/>} />
+  </Routes>
+  </BrowserRouter>
   );
 }
 

@@ -15,20 +15,3 @@
       color: blue;
       border: none;
 }
-.main{
-      width: 80%;
-      margin-left: 10%;
-      margin-top: 2.5%;
-      box-shadow: grey 1px 3px 10px 5px;
-}
-.int{
-      width: 30%;
-      display: inline-block;
-}
-.input{
-      width: 65%;
-}
-.btns{
-      display: block;
-      margin: 10px 10px; 
-}

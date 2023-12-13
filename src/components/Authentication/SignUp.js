@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Input from "../UI/Input";
-import classes from "./Authentication.module.css";
+import classes from "./SignUp.module.css";
 import signupIcon from "../asset/signup-icon.png";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import AuthContext from "../store/AuthContext";
 
-const Authentication = () => {
+const SignUp = () => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLogin, setIsLogin] = useState(false);
-  const history = useHistory();
+  const history = useNavigate();
+  const authCtx = useContext(AuthContext);
   const switchModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
@@ -41,8 +43,9 @@ const Authentication = () => {
   
           if (response.ok) {
             const data = await response.json();
-            console.log(data);
-            history.replace("/");
+            console.log("d",data.idToken);
+            authCtx.login(data.idToken)
+            history("/");
           } else {
             const data = await response.json();
             throw new Error(data.error.message);
@@ -113,4 +116,4 @@ const Authentication = () => {
   );
 };
 
-export default Authentication;
+export default SignUp;
