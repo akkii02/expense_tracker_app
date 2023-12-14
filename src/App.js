@@ -7,6 +7,7 @@ import Root from './components/Pages/Root';
 import Profile from './components/Pages/Profile';
 import Verification from './components/Pages/Verification';
 
+
 function App() {
 const authCtx = useContext(AuthContext)
   return (

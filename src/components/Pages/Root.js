@@ -1,8 +1,8 @@
 // import { Link } from "react-router-dom";
-import Welcome from "./Welcome";
+import Header from "../Navbar/Header";
 const Root = () => {
       return (
-            <Welcome/>
+            <Header/>
       );
 };
 export default Root;

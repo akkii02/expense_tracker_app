@@ -4,7 +4,10 @@
       margin-left: 10%;
       margin-top: 2.5%;
       box-shadow: grey 1px 3px 10px 5px;
-      padding: 20px;
+      padding: 30px;
+}
+.verifybtn{
+      margin-left: 45%;
 }
 .int{
       width: 30%;
