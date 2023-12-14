@@ -2,14 +2,14 @@ import React, { useContext, useState } from "react";
 import Input from "../UI/Input";
 import classes from "./SignUp.module.css";
 import signupIcon from "../asset/signup-icon.png";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import AuthContext from "../store/AuthContext";
 
 const SignUp = () => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const history = useNavigate();
   const authCtx = useContext(AuthContext);
   const switchModeHandler = () => {
@@ -100,9 +100,9 @@ const SignUp = () => {
               {isLogin ? "Login" : "Sign Up"}
             </button>
             {isLogin && (
-              <a href="/" className={classes.forgetLink}>
+              <Link to="/ForgetPassword" className={classes.forgetLink}>
                 Forget password
-              </a>
+              </Link>
             )}
           </form>
         </div>
