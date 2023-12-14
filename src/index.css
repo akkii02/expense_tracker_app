@@ -19,3 +19,7 @@ label{
   /* margin: 5px; */
   padding: 10px;
 }
+p{
+  display: inline;
+  margin: 0 20px;
+}

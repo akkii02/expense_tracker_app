@@ -1,0 +1,22 @@
+.main {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 3%;
+  padding: 20px;
+  box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+}
+.header {
+      text-align: center;
+}
+.li {
+      width: 80%;
+      margin: 2% 10%;
+      list-style-type: none;
+      padding: 10px;
+      box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      background-color: #fff;
+      border: 2px solid black;
+}
