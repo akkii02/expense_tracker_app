@@ -18,6 +18,7 @@ export const AuhContextProvider = (props) => {
       console.log("token",token)
   };
   const logoutHandler = () => {
+    setToken("");
       localStorage.removeItem("token")
   };
 
