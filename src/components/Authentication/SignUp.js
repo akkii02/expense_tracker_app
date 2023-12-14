@@ -43,8 +43,9 @@ const SignUp = () => {
   
           if (response.ok) {
             const data = await response.json();
+            console.log(data)
             console.log("d",data.idToken);
-            authCtx.login(data.idToken)
+            authCtx.login(data.idToken,data.email)
             history("/Verification");
           } else {
             const data = await response.json();

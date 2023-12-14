@@ -1,20 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Input from "../UI/Input";
 import classes from "./InputExpense.module.css";
+import AuthContext from "../store/AuthContext";
 
 const InputExpense = (props) => {
   const [price, setPrice] = useState('');
   const [des, setDes] = useState('');
   const [category, setCategory] = useState('petrol'); 
-
-  const handleFormSubmit = (e) => {
+  const authCtx = useContext(AuthContext);
+  const removedAt = authCtx.email.replace('@', '');
+  const sanitizedEmail = removedAt.replace('.', '');
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     const expenseData = {
+      id: Date.now(),
       price,
       description: des,
       category,
     };
+    const response = await fetch(`https://expense-tracker-7d7d2-default-rtdb.firebaseio.com/expense${sanitizedEmail}.json`,
+    {
+      method:"POST",
+      body:JSON.stringify({expenseData}),
+      headers:{
+        "Content-type":"application/json"
+      }
+    })
+    const data = response.json();
+    console.log("D",data)
+    if(data.ok){
+      console.log("POST Successful");
+    }
+
 props.addExpense(expenseData);
     console.log(expenseData);
     setPrice('');
