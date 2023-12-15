@@ -25,6 +25,8 @@
       background-color: #fff;
       border: 2px solid black;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
 }
 .sidebar{
       width: 300px;
@@ -53,6 +55,25 @@
 .boxs{
       margin: 0 10px;
 }
+.buttons{
+      /* display: flex; */
+}
+.edit{
+      background-color: green;
+      color: white;
+      padding: 4px 5px;
+      border: none;
+      margin: 3px;
+
+}
+.delete{
+      background-color: red;
+      color: white;
+      padding: 5px;
+      border: none;
+      margin: 3px;
+
+}
 @media only screen and (max-width: 767px) {
       .main{
             width: 100%;
@@ -80,8 +101,15 @@
             /* border: 2px solid red; */
             /* display: inline; */
             margin: 0 6px;
+            overflow-y: scroll;
       }
       .boxs{
-            margin: 0 6px;
+            margin: 0 2px;
+      }
+      .buttons{
+            display: flex;
+      }
+      .edit,.delete{
+            padding: 2px 4px;
       }
 }

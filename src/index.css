@@ -23,11 +23,11 @@ label{
 }
 p{
   display: inline;
-  margin: 0 20px;
+  margin: 0 15px;
 }
 
 @media only screen and (max-width: 767px) {
   p{
-  margin: 0 10px;
+  margin: 0 6px;
   }
 }

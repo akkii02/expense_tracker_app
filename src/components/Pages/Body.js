@@ -2,12 +2,15 @@ import React, { useEffect, useState, useContext } from 'react';
 import InputExpense from '../InputExpense/InputExpense';
 import OutputExpense from '../OutputExpense/OutputExpense';
 import AuthContext from '../store/AuthContext';
+import EditExpenseContext from '../store/EditExpenseContext';
 
 function Body() {
   const [expenses, setExpenses] = useState([]);
+  const [reRender,setReRender] = useState(false);
   const authCtx = useContext(AuthContext);
   const removedAt = authCtx.email.replace('@', '');
   const sanitizedEmail = removedAt.replace('.', '');
+  const EditCtx = useContext(EditExpenseContext);
 
   const addExpenseHandler = (newExpense) => {
     const newExpenseWithId = {
@@ -49,14 +52,46 @@ function Body() {
     };
   
     fetchData();
-  }, [sanitizedEmail]);
+  }, [sanitizedEmail,reRender,EditCtx.updatedData]);
   
- 
- 
+  async function updateData(id) {
+    const response = await fetch(`https://expense-tracker-7d7d2-default-rtdb.firebaseio.com/expense${sanitizedEmail}.json`, {
+      method: "GET",
+    });
+  
+    const data = await response.json();
+    // console.log("update", data);
+    if (!data || Object.keys(data).length === 0) {
+      console.log('No items to update');
+      return;
+    }
+    let itemIdUpdatedata;
+    for (const key in data) {
+      if (typeof data[key] === 'object') {
+        if (data[key].expenseData.id === id) {
+          itemIdUpdatedata = key;
+          break;
+        }
+      }
+    }
+    console.log("upID", itemIdUpdatedata);
+    const res = await fetch(`https://expense-tracker-7d7d2-default-rtdb.firebaseio.com/expense${sanitizedEmail}/${itemIdUpdatedata}.json`,
+    {
+      method:"DELETE",
+    })
+    
+  if (res.ok) {
+    alert('Item deleted successfully');
+    setReRender(true)
+  } else {
+    console.error('Failed to delete item');
+  }
+  }
+  
   return (
     <>
       <InputExpense addExpense={addExpenseHandler} />
-      <OutputExpense expenses={expenses} />
+      <OutputExpense expenses={expenses} getUpdateData={updateData} />
     </>
   );
 }
