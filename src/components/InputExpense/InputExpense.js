@@ -70,6 +70,9 @@ props.addExpense(expenseData);
             <option value="petrol">Petrol</option>
             <option value="food">Food</option>
             <option value="clothes">Clothes</option>
+            <option value="movie">Movie</option>
+            <option value="Electronic">Electronic</option>
+            <option value="Recharge">Recharge</option>
           </select>
         </div>
       </div>

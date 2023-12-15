@@ -6,7 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+*{
+  box-sizing: border-box;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -22,4 +24,10 @@ label{
 p{
   display: inline;
   margin: 0 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  p{
+  margin: 0 10px;
+  }
 }
