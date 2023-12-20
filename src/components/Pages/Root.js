@@ -1,11 +1,13 @@
 // import { Link } from "react-router-dom";
+import InputExpense from "../InputExpense/InputExpense";
 import Header from "../Navbar/Header";
-import Body from './Body'
+import OutputExpense from "../OutputExpense/OutputExpense";
 const Root = () => {
       return (
             <>
             <Header/>
-            <Body/>
+            <InputExpense/>
+            <OutputExpense/>
             </>
       );
 };

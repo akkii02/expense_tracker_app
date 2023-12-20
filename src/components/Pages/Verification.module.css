@@ -12,6 +12,8 @@
 .int{
       width: 30%;
       display: inline-block;
+      justify-content: center;
+      align-items: center;
 }
 .input{
       width: 65%;

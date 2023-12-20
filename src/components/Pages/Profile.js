@@ -1,12 +1,14 @@
-import React,{useState,useContext, useEffect} from 'react';
+import React,{useState, useEffect} from 'react';
 import classes from './Profile.module.css';
-import AuthContext from '../store/AuthContext';
+// import AuthContext from '../store/AuthContext';
 import Input from '../UI/Input';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
       const [fullName, setFullName] = useState("");
       const [profilePhoto, setProfilePhoto] = useState("");
-      const authCtx = useContext(AuthContext);
+      // const authCtx = useContext(AuthContext);
+      const token = useSelector((state)=>state.idToken)
 
       const fetchData = async () => {
             try {
@@ -15,7 +17,7 @@ const Profile = () => {
                 {
                   method: 'POST',
                   body: JSON.stringify({
-                    idToken: authCtx.token,
+                    idToken:token,
                   }),
                   headers: {
                     'Content-Type': 'application/json',
@@ -44,7 +46,7 @@ const Profile = () => {
                 {
                   method: "POST",
                   body: JSON.stringify({
-                    idToken: authCtx.token,
+                    idToken: token,
                     displayName: fullName,
                     photoUrl: profilePhoto,
                     returnSecureToken: true,
@@ -65,7 +67,7 @@ const Profile = () => {
         
           useEffect(()=>{
             fetchData()           
-          },[authCtx.token])
+          },[token])
       return (
             <form className={classes.main} onSubmit={submitHandler}>
             <h3>Contact Detail</h3>
