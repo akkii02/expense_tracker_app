@@ -112,9 +112,9 @@ const InputExpense = () => {
     setDes('');
     setCategory("Select Category");
 }
-
+const isTheme = useSelector((state)=>state.theme.isDarkTheme)
   return (
-    <form className={classes.main} onSubmit={handleFormSubmit}>
+    <form className={`${classes.main} ${isTheme ? classes.dark : ''}`} onSubmit={handleFormSubmit}>
       <div className={classes.body}>
         <div className={classes.input}>
           <Input

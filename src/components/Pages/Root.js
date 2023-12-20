@@ -2,6 +2,7 @@
 import InputExpense from "../InputExpense/InputExpense";
 import Header from "../Navbar/Header";
 import OutputExpense from "../OutputExpense/OutputExpense";
+
 const Root = () => {
       return (
             <>

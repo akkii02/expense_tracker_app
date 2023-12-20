@@ -6,6 +6,7 @@ import {Link, useNavigate} from "react-router-dom";
 // import AuthContext from "../store/AuthContext";
 import {useDispatch} from "react-redux";
 import { authActions } from "../store/auth-slice";
+import Header from "../Navbar/Header";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -71,6 +72,8 @@ const SignUp = () => {
   };
   
   return (
+  <>
+    <Header/>
     <div className={classes.auth}>
       <div className={classes.signup}>
         <div className={classes.main}>
@@ -120,6 +123,7 @@ const SignUp = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

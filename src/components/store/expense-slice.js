@@ -26,9 +26,6 @@ const expensesSlice = createSlice({
     editExpenses(state, action) {
       state.editOB = { ...action.payload };
     },
-    clearExpenses(state, action) {
-      state.expenses = action.payload;
-    },
     setReRender(state, action) {
       state.reRender = action.payload.reRender;
     },

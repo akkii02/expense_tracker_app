@@ -8,11 +8,19 @@ import Verification from './components/Pages/Verification';
 import ForgetPassword from './components/Pages/ForgetPassword';
 import './App.css';
 import { useSelector } from 'react-redux';
-
+import { useEffect } from 'react';
+import classes from "./new.module.css";
 function App() {
 // const authCtx = useContext(AuthContext)
 const isLoggedIn =  useSelector((state)=>state.auth.isLoggedIn)
 console.log("APPP",isLoggedIn)
+const isTheme = useSelector((state)=>state.theme.isDarkTheme)
+useEffect(() => {
+  document.body.classList.toggle(classes.dark, isTheme);
+  return () => {
+    document.body.classList.remove(classes.dark);
+  };
+}, [isTheme]);
   return (
   <BrowserRouter>
   <Routes>

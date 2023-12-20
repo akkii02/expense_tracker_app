@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import classes from "./OutputExpense.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { expenseAction } from "../store/expense-slice";
-
+import { enableDarkTheme } from "../store/themeSlice";
 const OutputExpense = () => {
   // Use useSelector to get expenses from Redux store
   const dispatch = useDispatch()
@@ -86,17 +86,32 @@ const OutputExpense = () => {
   }
     console.log("AK",expenses)
     
+    const enableHandler = () => {
+      dispatch(enableDarkTheme({isDarkThemeEnable:true}));
+    };
+    const isTheme = useSelector((state)=>state.theme.isDarkTheme)
 
+    const downloadFileHandler = () => {
+        const csvContent =
+          "data:text/csv;charset=utf-8," +
+          expenses.map((expense) => Object.values(expense).join(",")).join("\n");
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "expenses.csv");
+        document.body.appendChild(link);
+        link.click();
+    };
   return (
     <>
-      <div className={classes.main}>
+      <div className={`${classes.main} ${isTheme ? classes.dark : ''}`}>
         <h2 className={classes.header}>Expense List</h2>
         {expenses.length === 0 ? (
           <div className={classes.NotFound}>Expenses Not Found.</div>
         ) : (
           <ul>
             {expenses.map((expense) => (
-              <li key={expense.id} className={classes.li}>
+              <li key={expense.id} className={ `${classes.li} ${isTheme ? classes.dark : ''}`}>
                 <div className={classes.box}>{expense.description}</div>
                 <div className={classes.boxs}>
                   <p>{expense.price}₹</p>
@@ -120,13 +135,18 @@ const OutputExpense = () => {
             ))}
           </ul>
         )}
+        {expenses.length > 0 && 
+          <div className={classes.downloadBtn}>
+        <button className={classes.btn} onClick={downloadFileHandler} >Download csv</button>
+        </div>
+        }
       </div>
-      <span className={classes.sidebar}>
+      <span className={`${classes.sidebar}  ${isTheme ? classes.dark : ''}`}>
         <div className={classes.back}>
         <h3 className={classes.sideHeading}>Total Amount</h3>
         <h1 className={classes.totalAmount}> {totalAmount}₹</h1>
         </div>
-        {totalAmount > 10000 && <button className={classes.newBtn}>Active Premium</button>}
+        {totalAmount > 10000 && <button onClick={enableHandler} className={classes.newBtn}>Active Premium</button>}
       </span>
     </>
   );

@@ -1,43 +1,60 @@
 .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid black;
-      padding: 10px 20px; /* Added padding for better spacing */
-      background-color: #3498db; /* Added background color */
-      color: white; /* Text color for better contrast */
-    }
-    
-    .main {
-      display: flex;
-      justify-content: space-between;
-      width: 400px;
-    }
-    
-    .completeNow {
-      width: 300px;
-      background-color: #87CEEB; /* Skyblue color */
-      padding: 10px;
-      border-radius: 10px;
-      color: white;
-      text-align: center; /* Centering text */
-    }
-    
-    .btn {
-      background-color: transparent;
-      color: #3498db; /* Blue color */
-      border: none;
-      cursor: pointer; /* Adding pointer cursor for better UX */
-    }
-    
-    .logout {
-      background-color: #e74c3c; /* Red color */
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    
-    /* Add more styles as needed */
-    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+}
+
+.dark {
+  background-color: #1d2a35;
+}
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  margin: 5px;
+}
+
+.completeNow {
+  width: 290px;
+  background-color: #87ceeb;
+  padding: 4px;
+  border-radius: 10px;
+  color: white;
+  margin: 5px;
+}
+
+.btn {
+  background-color: transparent;
+  color: #3498db;
+  border: none;
+  cursor: pointer;
+}
+
+.logout {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggleBtn {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+}
+.icon {
+  width: 100%;
+}
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
