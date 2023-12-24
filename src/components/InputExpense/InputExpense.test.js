@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import InputExpense from './InputExpense';
 
 const mockStore = configureStore();
-
+//Total 10 test cases Added
 describe('InputExpense component', () => {
  
   it('renders without crashing', () => {
