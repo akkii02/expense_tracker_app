@@ -6,7 +6,7 @@ import {Link, useNavigate} from "react-router-dom";
 // import AuthContext from "../store/AuthContext";
 import {useDispatch} from "react-redux";
 import { authActions } from "../store/auth-slice";
-import Header from "../Navbar/Header";
+// import Header from "../Navbar/Header";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const SignUp = () => {
         const userId = data.email;
         dispatch(authActions.login({ idToken, userId }));
             // authCtx.login(data.idToken,data.email)
-            history("/Verification");
+            history("/");
           } else {
             const data = await response.json();
             throw new Error(data.error.message);
@@ -73,7 +73,6 @@ const SignUp = () => {
   
   return (
   <>
-    <Header/>
     <div className={classes.auth}>
       <div className={classes.signup}>
         <div className={classes.main}>

@@ -4,28 +4,34 @@
   align-items: center;
   border-bottom: 1px solid black;
   padding: 10px 20px;
-  background-color: #3498db;
+  background: linear-gradient(to right, #3498db, #6c5ce7);
   color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .dark {
   background-color: #1d2a35;
 }
-.main {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 400px;
-  margin: 5px;
-}
 
 .completeNow {
   width: 290px;
-  background-color: #87ceeb;
-  padding: 4px;
+  background-color: #3498db;
+  padding: 10px;
   border-radius: 10px;
   color: white;
   margin: 5px;
+  text-align: center;
+}
+
+.completeNow  {
+  color: #2ecc71; /* Use a different color for the link */
+  text-decoration: none;
+  /* border: 2px solid red; */
+  margin: 5px; padding: 5px 5px;
+  color: white;
+}
+.completeNow a{
+  color: red;
 }
 
 .btn {
@@ -35,14 +41,31 @@
   cursor: pointer;
 }
 
-.logout {
+.logout{
   background-color: #e74c3c;
   color: white;
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
   cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease;
 }
+.toggleBtn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  /* padding: 8px 15px; */
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+.toggleBtn:hover {
+  transform: rotate(360deg); 
+  transition: transform 0.5s ease; 
+}
+
 
 .toggleBtn {
   width: 40px;
@@ -50,11 +73,26 @@
   background-color: transparent;
   border: none;
 }
+
 .icon {
   width: 100%;
 }
+
 .nav {
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.verify {
+  background-color: #3498db;
+  padding: 3px 3px;
+  border-radius: 10px;
+  color: white;
+}
+
+.verify a {
+  text-decoration: none;
+  color: white; 
 }

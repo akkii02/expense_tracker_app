@@ -3,6 +3,7 @@ import Input from "../UI/Input";
 import { useNavigate } from "react-router-dom";
 import classes from './Verification.module.css';
 import { useSelector } from "react-redux";
+import Header from "../Navbar/Header";
 
 const Verification = () => {
   const token = useSelector((state) => state.auth.idToken)
@@ -20,7 +21,7 @@ const Verification = () => {
 
     try {
       const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDYqoBZCKTVh4iUeC-VLJzHdTjoISkXW-k",
+        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDYqoBZCKTVh4iUeC-VLJzHdTjoISkXW-k.json",
         {
           method: "POST",
           body: JSON.stringify({
@@ -51,6 +52,7 @@ const Verification = () => {
 
   return (
     <>
+    <Header/>
       {!isLoggedIn && (
         <div className={classes.main}>
           <button className={classes.verifybtn} onClick={switchHandler}>

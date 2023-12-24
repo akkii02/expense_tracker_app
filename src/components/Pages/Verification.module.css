@@ -1,24 +1,113 @@
-
-.main{
-      width: 80%;
-      margin-left: 10%;
-      margin-top: 2.5%;
+.main {
+      width: 60%;body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #b04747; /* Set your desired background color */
+          }
+          
+          .main {
+            width: 60%;
+            padding: 20px;
+            box-shadow: grey 1px 3px 10px 5px;
+            background-color: #fff; /* Set your desired background color */
+          }
+          
+          .verifybtn {
+            margin-left: 50%;
+            transform: translateX(-50%); /* Center the button */
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+          }
+          
+          .verifybtn:hover {
+            background-color: #2980b9;
+            transform: translateX(-50%) scale(1.1);
+          }
+          
+          .int {
+            width: 50%;
+            text-align: center;
+            margin: 10px auto;
+          }
+          
+          .input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+          }
+          
+          .btns {
+            display: block;
+            margin: 10px auto;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+          }
+          
+          .btns:hover {
+            background-color: #2980b9;
+            transform: scale(1.1);
+          }
+          
+      margin: 2.5% auto;
+      padding: 20px;
       box-shadow: grey 1px 3px 10px 5px;
-      padding: 30px;
-}
-.verifybtn{
-      margin-left: 45%;
-}
-.int{
-      width: 30%;
-      display: inline-block;
-      justify-content: center;
-      align-items: center;
-}
-.input{
-      width: 65%;
-}
-.btns{
+    }
+    
+    .verifybtn {
+      margin-left: 50%;
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    
+    .verifybtn:hover {
+      background-color: #2980b9;
+      transform: scale(1.1);
+    }
+    
+    .int {
+      width: 50%;
+      text-align: center;
+      margin: 10px auto;
+    }
+    
+    .input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btns {
       display: block;
-      margin: 10px 10px; 
-}
+      margin: 10px auto;
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    
+    .btns:hover {
+      background-color: #2980b9;
+      transform: scale(1.1);
+    }
+    

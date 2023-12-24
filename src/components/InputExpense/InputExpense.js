@@ -6,23 +6,23 @@ import { expenseAction } from "../store/expense-slice";
 
 const InputExpense = () => {
   const dispatch = useDispatch();
-  const [id,setId] = useState('');
-  const [price, setPrice] = useState('');
-  const [des, setDes] = useState('');
+  const [id, setId] = useState("");
+  const [price, setPrice] = useState("");
+  const [des, setDes] = useState("");
   const [category, setCategory] = useState("Select Category");
-  
-  const email = useSelector((state)=>state.auth.userId)
-  const removedAt = email.replace('@', '');
-  const sanitizedEmail = removedAt.replace('.', ''); 
+
+  const email = useSelector((state) => state.auth.userId) || "";
+  const removedAt = email.replace("@", "");
+  const sanitizedEmail = removedAt.replace(".", "");
 
   const EditCtx = useSelector((state) => state.expense.editOB);
 
-  useEffect(()=>{
+  useEffect(() => {
     setId(EditCtx.id);
     setPrice(EditCtx.price);
     setDes(EditCtx.description);
     setCategory(EditCtx.category);
-  },[EditCtx.id, EditCtx.price, EditCtx.description, EditCtx.category])
+  }, [EditCtx.id, EditCtx.price, EditCtx.description, EditCtx.category]);
 
   async function editData(id, updatedData) {
     const response = await fetch(
@@ -35,13 +35,13 @@ const InputExpense = () => {
     const data = await response.json();
 
     if (!data || Object.keys(data).length === 0) {
-      console.log('No items to update');
+      console.log("No items to update");
       return;
     }
 
     let itemIdToUpdate;
     for (const key in data) {
-      if (typeof data[key] === 'object') {
+      if (typeof data[key] === "object") {
         if (data[key].expenseData.id === id) {
           itemIdToUpdate = key;
           break;
@@ -76,8 +76,6 @@ const InputExpense = () => {
     }
   }
 
-
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -87,16 +85,19 @@ const InputExpense = () => {
       description: des,
       category,
     };
-    if(id){
-      editData(id,expenseData)
-    }else{
-    const response = await fetch(`https://expense-tracker-7d7d2-default-rtdb.firebaseio.com/expense${sanitizedEmail}.json`, {
-        method: "POST",
-        body: JSON.stringify({ expenseData }),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+    if (id) {
+      editData(id, expenseData);
+    } else {
+      const response = await fetch(
+        `https://expense-tracker-7d7d2-default-rtdb.firebaseio.com/expense${sanitizedEmail}.json`,
+        {
+          method: "POST",
+          body: JSON.stringify({ expenseData }),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
 
       const data = await response.json();
       console.log("D", data);
@@ -104,17 +105,20 @@ const InputExpense = () => {
       if (response.ok) {
         console.log("POST Successful");
       }
-    // console.log(expenseData);
-  }
-    dispatch(expenseAction.addExpense(expenseData))
+      // console.log(expenseData);
+    }
+    dispatch(expenseAction.addExpense(expenseData));
     setId(null);
-    setPrice('');
-    setDes('');
+    setPrice("");
+    setDes("");
     setCategory("Select Category");
-}
-const isTheme = useSelector((state)=>state.theme.isDarkTheme)
+  };
+  const isTheme = useSelector((state) => state.theme.isDarkTheme);
   return (
-    <form className={`${classes.main} ${isTheme ? classes.dark : ''}`} onSubmit={handleFormSubmit}>
+    <form
+      className={`${classes.main} ${isTheme ? classes.dark : ""}`}
+      onSubmit={handleFormSubmit}
+    >
       <div className={classes.body}>
         <div className={classes.input}>
           <Input
@@ -133,7 +137,9 @@ const isTheme = useSelector((state)=>state.theme.isDarkTheme)
           />
         </div>
         <div className={classes.input}>
-          <label className={classes.label} htmlFor="expenseCategory">Expense Category:</label>
+          <label className={classes.label} htmlFor="expenseCategory">
+            Expense Category:
+          </label>
           <select
             id="expenseCategory"
             className={classes.input}
@@ -148,7 +154,7 @@ const isTheme = useSelector((state)=>state.theme.isDarkTheme)
         </div>
       </div>
       <button type="submit" className={classes.btn}>
-      {id ? "Update Expense" : "Add Expense"}
+        {id ? "Update Expense" : "Add Expense"}
       </button>
     </form>
   );

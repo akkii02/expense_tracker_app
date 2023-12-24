@@ -1,16 +1,13 @@
-const Input = (props) => {
+// Input.js
+import React from 'react';
+
+const Input = ({ type, label, value, onChange }) => {
   return (
-    <>
-      <label>{props.label}</label>
-      <input
-        type={props.type}
-        placeholder={props.placeholder}
-        className={props.className}
-        onClick={props.onClick}
-        value={props.value}
-        onChange={props.onChange}
-      />
-    </>
+    <div>
+      <label htmlFor={label}>{label}</label>
+      <input type={type} id={label} value={value} onChange={onChange} />
+    </div>
   );
 };
+
 export default Input;

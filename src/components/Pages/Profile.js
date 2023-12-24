@@ -3,8 +3,10 @@ import classes from './Profile.module.css';
 // import AuthContext from '../store/AuthContext';
 import Input from '../UI/Input';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
+  const navigate = useNavigate
       const [fullName, setFullName] = useState("");
       const [profilePhoto, setProfilePhoto] = useState("");
       // const authCtx = useContext(AuthContext);
@@ -25,6 +27,9 @@ const Profile = () => {
                 }
               );
               const data = await response.json();
+              if(data.ok){
+                navigate("/")
+              }
               
               if (data.users && data.users.length > 0) {
                 const user = data.users[0];

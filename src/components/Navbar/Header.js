@@ -29,13 +29,16 @@ function Header() {
     <>
       <header className={classes.header}>
         <h1>Expense Tracker</h1>
-        <div className={classes.main}>
+        
           <div className={classes.nav}>
             {isLoggedIn && (
               <>
                 <button onClick={logoutHandler} className={classes.logout}>
                   Logout
                 </button>
+                <div className={classes.verify}>
+                  <Link to="/Verification">Verify Email</Link>
+                </div>
                 <div className={classes.completeNow}>
                   Your profile is incomplete.
                   <Link to="/Profile">Complete now</Link>
@@ -48,7 +51,6 @@ function Header() {
               </button>
             )}
           </div>
-        </div>
       </header>
     </>
   );

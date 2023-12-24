@@ -7,6 +7,9 @@ const OutputExpense = () => {
   // Use useSelector to get expenses from Redux store
   const dispatch = useDispatch()
   const email = useSelector((state)=>state.auth.userId)
+   const isDarkThemeEnable = useSelector(
+    (state) => state.theme.isDarkThemeEnable
+  );
   const reRenderValue = useSelector(state => state.expense.reRender);
   console.log("reRenderFetch",reRenderValue)
   const removedAt = email.replace('@', '');
@@ -135,7 +138,7 @@ const OutputExpense = () => {
             ))}
           </ul>
         )}
-        {expenses.length > 0 && 
+        {totalAmount > 10000  && 
           <div className={classes.downloadBtn}>
         <button className={classes.btn} onClick={downloadFileHandler} >Download csv</button>
         </div>
